@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12396a">
+<title>Abdullo avtotest — Haydovchilik imtihoniga tayyorgarlik</title>
+<style>
+:root{--navy:#12396a;--blue:#1d4ed8;--red:#d92d32;--green:#16804a;--bg:#f3f6fb;--ink:#172033;--muted:#64748b;--line:#dce4ef;--card:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.5}
+header{background:linear-gradient(120deg,#102e56,#1d4f89);color:white;padding:18px 20px}
+.wrap{max-width:1080px;margin:auto}.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;background:#fff;color:var(--navy);display:grid;place-items:center;font-size:25px;font-weight:900}.brand h1{font-size:clamp(19px,3vw,27px);margin:0}.brand p{margin:2px 0 0;color:#d8e6f7;font-size:13px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}button,.navbtn{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer;font-size:14px}.navbtn{background:#ffffff1c;color:#fff}.navbtn.active{background:#fff;color:var(--navy)}
+main{max-width:1080px;margin:24px auto;padding:0 16px}.hero{background:linear-gradient(135deg,#fff,#eaf2ff);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,5vw,42px);display:grid;grid-template-columns:1.5fr 1fr;gap:24px;align-items:center}.hero h2{font-size:clamp(27px,4vw,42px);line-height:1.1;margin:0 0 12px;color:var(--navy)}.hero p{color:var(--muted);margin:0 0 20px}.hero-art{min-height:150px;border-radius:16px;background:linear-gradient(145deg,#12396a,#2874b8);display:grid;place-items:center;color:white;font-size:80px}.primary{background:var(--red);color:white}.secondary{background:#e8effa;color:var(--navy)}.green{background:var(--green);color:#fff}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:left;cursor:pointer}.card:hover{border-color:#91b5eb;transform:translateY(-1px)}.card .emoji{font-size:27px}.card h3{margin:8px 0 5px;color:var(--navy)}.card p{margin:0;color:var(--muted);font-size:14px}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,26px);margin-bottom:18px}.hidden{display:none!important}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.muted{color:var(--muted)}.small{font-size:13px}.pill{display:inline-block;background:#e8effa;color:var(--navy);padding:5px 10px;border-radius:999px;font-size:12px;font-weight:800}
+.progress{height:8px;background:#e6edf6;border-radius:99px;overflow:hidden;margin:14px 0}.progress div{height:100%;width:0;background:var(--blue);transition:width .2s}
+.question{font-size:clamp(19px,3vw,25px);font-weight:800;margin:16px 0}.answers{display:grid;gap:10px}.answer{display:flex;gap:10px;align-items:flex-start;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:13px;color:var(--ink);font-weight:500}.answer:hover{border-color:#8bb0e7}.answer.selected{border-color:var(--blue);background:#eef4ff}.answer.correct{border-color:var(--green);background:#eaf8ef}.answer.wrong{border-color:var(--red);background:#fff0f0}.letter{width:28px;height:28px;flex:0 0 28px;border-radius:8px;background:#edf2f8;display:grid;place-items:center;font-weight:800;color:var(--navy)}
+.navigator{display:grid;grid-template-columns:repeat(10,minmax(28px,1fr));gap:7px;margin:14px 0}.qnum{padding:8px 0;background:#eef2f7;color:#344256;border-radius:8px}.qnum.done{background:#dbeafe;color:#1d4ed8}.qnum.current{outline:2px solid var(--blue);outline-offset:1px}.qnum.correct{background:#d9f5e2;color:#146c3b}.qnum.wrong{background:#ffe0e0;color:#b42318}
+.actions{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:18px}.actions button{flex:1;min-width:110px}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{background:#f5f8fc;border-radius:12px;padding:16px;text-align:center}.stat strong{font-size:28px;color:var(--navy);display:block}.reviewitem{padding:14px 0;border-bottom:1px solid var(--line)}.reviewitem:last-child{border-bottom:0}.status-ok{color:var(--green);font-weight:800}.status-no{color:var(--red);font-weight:800}
+footer{max-width:1080px;margin:28px auto 0;padding:20px 16px 30px;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:720px){.hero{grid-template-columns:1fr}.hero-art{min-height:100px;font-size:58px}.cards{grid-template-columns:1fr}.navigator{grid-template-columns:repeat(5,minmax(28px,1fr))}.statgrid{grid-template-columns:1fr}.brand p{max-width:230px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap">
+  <div class="brand"><div class="logo">A</div><div><h1>ABDULLO AVTOTEST</h1><p>Haydovchilik imtihoniga tayyorgarlik</p></div></div>
+  <nav>
+   <button class="navbtn active" data-page="home">Bosh sahifa</button>
+   <button class="navbtn" data-page="exam">Imtihon testi</button>
+   <button class="navbtn" data-page="topics">Mavzular</button>
+   <button class="navbtn" data-page="signs">Yo‘l belgilari</button>
+  </nav>
+ </div>
+</header>
+<main>
+<section id="home">
+ <div class="hero">
+  <div><span class="pill">ONLAYN MASHQ PLATFORMASI</span><h2>Yo‘l qoidalarini o‘rganing. Imtihonga tayyorlaning.</h2><p>Test ishlang, javoblaringizni tekshiring va natijangizni ko‘ring. Telefon va kompyuter uchun moslashtirilgan.</p><button class="primary" id="startHome">Testni boshlash →</button></div>
+  <div class="hero-art" aria-hidden="true">🚘</div>
+ </div>
+ <div class="cards">
+  <button class="card" id="cardExam"><div class="emoji">📝</div><h3>Imtihon testi</h3><p>Vaqt bilan ishlang va yakunda natijani ko‘ring.</p></button>
+  <button class="card" id="cardTopics"><div class="emoji">📚</div><h3>Mavzular bo‘yicha</h3><p>Namunaviy savollar orqali mashq qiling.</p></button>
+  <button class="card" id="cardSigns"><div class="emoji">🚦</div><h3>Yo‘l belgilari</h3><p>Belgilar haqidagi qisqa ma’lumotlar.</p></button>
+ </div>
+ <p class="muted small" style="margin-top:18px">Eslatma: quyidagi savollar sayt ishlashini namoyish etuvchi namunalar. Rasmiy imtihon savollari emas.</p>
+</section>
+
+<section id="exam" class="hidden">
+ <div class="panel">
+  <div class="row"><div><span class="pill" id="modeLabel">SINOV TESTI</span><h2 style="margin:8px 0 0">Test ishlash</h2></div><div class="pill">⏱ Qolgan vaqt: <span id="timer">10:00</span></div></div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <div class="row small muted"><span id="questionCount">Savol 1 / 10</span><span id="answeredCount">Javob berildi: 0</span></div>
+  <div class="question" id="questionText"></div>
+  <div class="answers" id="answers"></div>
+  <div class="actions"><button class="secondary" id="prevBtn">← Oldingi</button><button class="secondary" id="nextBtn">Keyingi →</button><button class="primary" id="finishBtn">Testni yakunlash</button></div>
+ </div>
+ <div class="panel"><h3 style="margin-top:0">Savollar navigatsiyasi</h3><p class="muted small">Raqamni bosing va savolga o‘ting. Ko‘k raqam — javob berilgan savol.</p><div class="navigator" id="navigator"></div></div>
+</section>
+
+<section id="result" class="hidden">
+ <div class="panel">
+  <span class="pill">TEST YAKUNLANDI</span><h2>Natijangiz</h2>
+  <div class="statgrid"><div class="stat"><strong id="score">0/10</strong><span>To‘g‘ri javob</span></div><div class="stat"><strong id="percent">0%</strong><span>Natija</span></div><div class="stat"><strong id="wrong">0</strong><span>Xato javob</span></div></div>
+  <p id="resultMessage"></p><div class="actions"><button class="primary" id="retryBtn">Qayta ishlash</button><button class="secondary" id="homeBtn">Bosh sahifaga</button></div>
+ </div>
+ <div class="panel"><h3>Javoblarni ko‘rib chiqish</h3><div id="review"></div></div>
+</section>
+
+<section id="topics" class="hidden">
+ <div class="panel"><span class="pill">O‘RGANISH</span><h2>Mavzular bo‘yicha test</h2><p>Hozircha sayt namunasi sifatida umumiy savollar berilgan. Keyinchalik tasdiqlangan savollar banki bilan almashtiring.</p><button class="primary" id="topicStart">Mashqni boshlash</button></div>
+ <div class="cards">
+  <div class="card" style="cursor:default"><div class="emoji">🚥</div><h3>Svetofor</h3><p>Svetofor signallari va harakatni tartibga solish.</p></div>
+  <div class="card" style="cursor:default"><div class="emoji">🦺</div><h3>Xavfsizlik</h3><p>Xavfsizlik kamari va ehtiyotkor haydash.</p></div>
+  <div class="card" style="cursor:default"><div class="emoji">🚶</div><h3>Piyodalar</h3><p>Piyodalarga yo‘l berish va o‘tish joylari.</p></div>
+ </div>
+</section>
+
+<section id="signs" class="hidden">
+ <div class="panel"><span class="pill">MA’LUMOT</span><h2>Yo‘l belgilari</h2><p>Yo‘l belgilarini rasmiy manbalar va amaldagi Yo‘l harakati qoidalari asosida o‘rganing. Bu boshlang‘ich sahifa bo‘lib, belgilar katalogini keyin qo‘shish mumkin.</p>
+ <div class="cards"><div class="card" style="cursor:default"><div class="emoji">🔺</div><h3>Ogohlantiruvchi</h3><p>Oldinda xavf yoki yo‘l sharoiti o‘zgarishi haqida ogohlantiradi.</p></div><div class="card" style="cursor:default"><div class="emoji">⛔</div><h3>Taqiqlovchi</h3><p>Ayrim harakatlarni taqiqlashi yoki cheklashi mumkin.</p></div><div class="card" style="cursor:default"><div class="emoji">🔵</div><h3>Buyuruvchi</h3><p>Muayyan harakat yo‘nalishi yoki tartibini bildiradi.</p></div></div></div>
+</section>
+</main>
+<footer>© <span id="year"></span> Abdullo avtotest · O‘quv maqsadidagi namuna. Rasmiy imtihon tizimi emas.</footer>
+<script>
+const questions = [
+ {q:"Svetoforning qizil chirog‘i nimani bildiradi?",a:["Harakatni davom ettirish","To‘xtash","Tezlikni oshirish","Faqat signal chalish"],c:1,why:"Qizil signal harakatlanishni taqiqlaydi."},
+ {q:"Piyodalar o‘tish joyiga yaqinlashganda haydovchi qanday yo‘l tutishi kerak?",a:["Ehtiyotkorlikni oshirib, zarur holatda piyodaga yo‘l berish","Tezlikni oshirish","Piyodalarni e’tiborsiz qoldirish","Faqat uzoqdan signal chalish"],c:0,why:"Piyodalar o‘tish joyida xavfsizlikni ta’minlash va qoidalarga rioya qilish zarur."},
+ {q:"Harakatni boshlashdan oldin haydovchi nima qilishi kerak?",a:["Darhol tezlashishi","Faqat faralarni yoqishi","Xavfsizlikni tekshirishi va zarur bo‘lsa yo‘l berishi","Ko‘zgularga qaramasligi"],c:2,why:"Harakatni boshlashdan avval vaziyatni tekshirish kerak."},
+ {q:"Xavfsizlik kamarining asosiy vazifasi nima?",a:["Yoqilg‘i sarfini kamaytirish","Jarohatlanish xavfini kamaytirish","Avtomobilni tezlashtirish","Tormozni almashtirish"],c:1,why:"Xavfsizlik kamari to‘qnashuv yoki keskin to‘xtashda jarohatlanish xavfini kamaytiradi."},
+ {q:"Haydash vaqtida telefonga chalg‘ish nimaga olib kelishi mumkin?",a:["Har doim xavfsizlikni oshiradi","Tormoz masofasini kamaytiradi","Yo‘lni yaxshiroq ko‘rishga yordam beradi","Avariya xavfini oshiradi"],c:3,why:"Chalg‘ish haydovchining vaziyatga javob berishini sekinlashtirishi mumkin."},
+ {q:"Yo‘lga chiqishdan oldin nimalarni tekshirish muhim?",a:["Faqat musiqa ovozini","Faqat salon rangini","Avtomobilning texnik holati va xavfsizlikka oid qismlarini","Faqat oynalarni artishni"],c:2,why:"Yo‘lga chiqishdan oldin transport vositasining xavfsiz holati tekshiriladi."},
+ {q:"Sirpanchiq yo‘lda qanday harakat qilish ma’qul?",a:["Keskin tormozlash","Tezlikni moslashtirib, keskin harakatlardan saqlanish","Oldindagi avtomobilga yaqinlashish","Rulni keskin burish"],c:1,why:"Sirpanchiq yo‘lda ehtiyotkorlik va keskin manevrlardan saqlanish muhim."},
+ {q:"Yo‘l belgilarining asosiy vazifasi nima?",a:["Harakat ishtirokchilariga axborot berish va harakatni tartibga solish","Faqat yo‘lni bezash","Avtomobil tezligini oshirish","Faqat piyodalar uchun xizmat qilish"],c:0,why:"Yo‘l belgilari yo‘l harakatini tartibga soladi, ogohlantiradi yoki ma’lumot beradi."},
+ {q:"Haydovchi chorrahaga yaqinlashganda nima qilishi kerak?",a:["Har doim tezlashishi","Ko‘zgularni yopishi","Yo‘l belgisi, svetofor va vaziyatni kuzatishi","Faqat orqaga qarashi"],c:2,why:"Chorrahada harakat tartibi va boshqa ishtirokchilarni kuzatish muhim."},
+ {q:"Boshqa transport vositasini quvib o‘tishdan oldin nima muhim?",a:["Oldinda hech narsa yo‘qligini taxmin qilish","Xavfsizlik va quvib o‘tish qoidalariga mosligini tekshirish","Faqat signal chalish","Tezlikni cheksiz oshirish"],c:1,why:"Quvib o‘tish faqat qoidalar ruxsat berganda va manevr xavfsiz bo‘lganda bajariladi."}
+];
+let index=0, answers=Array(questions.length).fill(null), seconds=600, interval=null, finished=false;
+const $=id=>document.getElementById(id);
+function showPage(page){["home","exam","result","topics","signs"].forEach(p=>$(p).classList.toggle("hidden",p!==page));document.querySelectorAll(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.page===page));window.scrollTo({top:0,behavior:"smooth"});}
+function startTest(){clearInterval(interval);index=0;answers=Array(questions.length).fill(null);seconds=600;finished=false;showPage("exam");renderQuestion();interval=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)finishTest(true)},1000);updateTimer();}
+function updateTimer(){$("timer").textContent=`${Math.floor(seconds/60)}:${String(seconds%60).padStart(2,"0")}`;}
+function renderQuestion(){const q=questions[index];$("questionCount").textContent=`Savol ${index+1} / ${questions.length}`;$("answeredCount").textContent=`Javob berildi: ${answers.filter(x=>x!==null).length}`;$("questionText").textContent=q.q;$("progressBar").style.width=`${((index+1)/questions.length)*100}%`;$("answers").innerHTML="";q.a.forEach((a,j)=>{const b=document.createElement("button");b.className="answer"+(answers[index]===j?" selected":"");b.innerHTML=`<span class="letter">${String.fromCharCode(65+j)}</span><span></span>`;b.querySelector("span:last-child").textContent=a;b.onclick=()=>{if(finished)return;answers[index]=j;renderQuestion()};$("answers").appendChild(b)});$("prevBtn").disabled=index===0;$("prevBtn").style.opacity=index===0?".5":"1";$("nextBtn").textContent=index===questions.length-1?"Oxirgi savol":"Keyingi →";renderNavigator();}
+function renderNavigator(){$("navigator").innerHTML="";questions.forEach((q,i)=>{const b=document.createElement("button");b.className="qnum"+(answers[i]!==null?" done":"")+(index===i?" current":"");b.textContent=i+1;b.onclick=()=>{index=i;renderQuestion()};$("navigator").appendChild(b)});}
+function finishTest(auto=false){if(finished)return;finished=true;clearInterval(interval);const correct=questions.reduce((n,q,i)=>n+(answers[i]===q.c?1:0),0),wrong=questions.length-correct,pct=Math.round(correct/questions.length*100);$("score").textContent=`${correct}/${questions.length}`;$("percent").textContent=pct+"%";$("wrong").textContent=wrong;$("resultMessage").textContent=(auto?"Vaqt tugadi. ":"")+(pct>=80?"Yaxshi natija! Mashqni davom ettiring.": "Yana mashq qilib, natijangizni yaxshilashingiz mumkin.");$("review").innerHTML="";questions.forEach((q,i)=>{const div=document.createElement("div");div.className="reviewitem";const ok=answers[i]===q.c;const h=document.createElement("div");h.innerHTML=`<strong>${i+1}. ${q.q}</strong> — <span class="${ok?"status-ok":"status-no"}">${ok?"To‘g‘ri":"Xato yoki javobsiz"}</span>`;const yours=document.createElement("p");yours.className="small muted";yours.textContent="Sizning javobingiz: "+(answers[i]===null?"Javob belgilanmagan":q.a[answers[i]]);const right=document.createElement("p");right.className="small";right.textContent="To‘g‘ri javob: "+q.a[q.c]+" — "+q.why;div.append(h,yours,right);$("review").appendChild(div)});showPage("result");}
+document.querySelectorAll(".navbtn").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.page==="exam"){if(!finished&&interval)return;startTest()}else showPage(b.dataset.page)}));
+$("startHome").onclick=startTest;$("cardExam").onclick=startTest;$("topicStart").onclick=startTest;$("cardTopics").onclick=()=>showPage("topics");$("cardSigns").onclick=()=>showPage("signs");
+$("prevBtn").onclick=()=>{if(index>0){index--;renderQuestion()}};$("nextBtn").onclick=()=>{if(index<questions.length-1){index++;renderQuestion()}};
+$("finishBtn").onclick=()=>{const unanswered=answers.filter(x=>x===null).length;if(unanswered>0&&!confirm(`${unanswered} ta savol javobsiz. Testni yakunlaysizmi?`))return;finishTest(false)};
+$("retryBtn").onclick=startTest;$("homeBtn").onclick=()=>showPage("home");$("year").textContent=new Date().getFullYear();
+</script>
+</body></html>
